@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- HTML Configuration -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sprint 1</title>
+    <!-- Link with CSS -->
+    <link rel="stylesheet" href="./assets/styles/style.css">
+    <!-- Import Font Family "Inter" -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="principal-container">
+        <img src="./assets/images/Vector.svg" alt="" id="logo-alura">
+        <div class="main-container">
+            <textarea id="text-content" placeholder="Ingrese el texto"></textarea>
+            <p id="caution-input">&#x1F6C8; Solo letras minúsculas y sin acentos</p>
+            <div class="buttons-container">
+                <button id="button-encrypt" onclick="encrypt()">Encriptar</button>
+                <button id="button-decrypt" onclick="decrypt()">Desencriptar</button>
+            </div>
+        </div>
+        <div class="output-global-container">
+            <div id="out-container">
+                <img src="./assets/images/Muneco.svg" alt="" id="image-output">
+                <p id="no-text">Ningún mensaje fue encontrado</p>
+                <p id="enter-text">Ingresa el texto que desees encriptar o desencriptar.</p>
+            </div>
+            <button id="button-copy" onclick="copy()">Copiar</button>
+        </div>
+    </div>
+
+    <script>
+        var output = document.getElementById("out-container");
+        var textinput = document.querySelector("textarea");
+
+        function encrypt(){
+            var input = String(textinput.value).toLowerCase();
+            var e = input.replaceAll("e","enter");
+            var i = e.replaceAll("i","imes");
+            var a = i.replaceAll("a","ai");
+            var o = a.replaceAll("o","ober");
+            var u = o.replaceAll("u","ufat");
+            var out = u;
+            // output.innerHTML = "<p class='output-style'>"+out+"</p>";
+            output.innerHTML = out;
+        }
+
+        function decrypt(){
+            var input = String(textinput.value).toLowerCase();
+            var enter = input.replaceAll("enter", "e");
+            var imes = enter.replaceAll("imes", "i");
+            var ai = imes.replaceAll("ai", "a");
+            var ober = ai.replaceAll("ober", "o");
+            var ufat = ober.replaceAll("ufat", "u");
+            var out = ufat;
+            // output.innerHTML = "<p class='output-style'>"+out+"</p>";
+            output.innerHTML = out;
+        }
+
+        function copy(){
+            navigator.clipboard.writeText(output.innerHTML);
+        }
+    </script>
+
+</body>
+
+</html>
+
